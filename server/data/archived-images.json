@@ -1,0 +1,22 @@
+[
+  {
+    "_id":       "0-5cbf50a",
+    "filename":  "../server/images/download.jpg",
+    "subfolder": "Folder 0",
+    "points":    0
+  }, {
+  "_id":       "1-5cbf50b",
+  "filename":  "../server/images/download.jpg",
+  "subfolder": "Folder 1",
+  "points":    0
+}, {
+  "_id":       "2-5cbf50c",
+  "filename":  "../server/images/download.jpg",
+  "subfolder": "Folder 2",
+  "points":    0
+}, {
+  "_id":       "3-5cbf50d",
+  "filename":  "../server/images/download.jpg",
+  "subfolder": "Folder 3",
+  "points":    0
+}]

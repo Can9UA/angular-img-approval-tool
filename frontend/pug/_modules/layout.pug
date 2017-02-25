@@ -1,0 +1,24 @@
+doctype html
+html(lang='en' ng-app="imageApprovalApp")
+  head
+    title IMAGE APPROVAL TOOL
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+    // build:css css/all.min.css 
+    link(rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-grid.min.css")
+    link(rel="stylesheet", href="css/all.css")
+    // endbuild 
+  body
+    block body
+    // build:js js/vendor.min.js 
+    script(src="../bower_components/angular/angular.min.js")
+    script(src="../bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js")
+    // endbuild 
+    // build:js js/main.min.js 
+    script(src="js/app.js")
+    script(src="js/services/approve.service.js")
+    script(src="js/controllers/approve.controller.js")
+    // endinject 
+    // endbuild 

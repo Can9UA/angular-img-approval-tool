@@ -1,0 +1,16 @@
+.fixed-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f0f0f3;
+}
+.fa-folder { color: #ffe791; }
+.fa-star { color: #dada14; }
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.card-img-top {
+  height: 200px;
+  width: 100%;
+}

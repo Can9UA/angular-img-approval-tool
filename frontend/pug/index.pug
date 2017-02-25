@@ -1,0 +1,69 @@
+extends _modules/layout
+block body
+  section.wrapper.mb-5(ng-controller="ApproveCtrl as approve")
+    .container.mt-5
+      header.mb-3
+        h1.text-center IMAGE APPROVAL TOOL
+      main
+        ul.nav.nav-tabs
+          li.nav-item
+            a(href="#"
+            ng-class="{'active': approve.activeTab === 'images'}"
+            ng-click="approve.setActiveTab('images')").nav-link
+              | All Images
+          li.nav-item
+            a(href="#"
+            ng-class="{'active': approve.activeTab === 'archived-images'}"
+            ng-click="approve.setActiveTab('archived-images')").nav-link
+              | Archived
+        div(ng-cloak).tab-content.pt-4
+          div(ng-if="approve.activeTab === 'images'").tab-pane.fade.show.active
+            div(infinite-scroll="approve.getNewItems()"
+            infinite-scroll-disabled="approve.busy").row
+              div(ng-repeat="image in approve.images | filter:approve.equal('points', approve.searchPoint) | filter:approve.greaterThan('points', approve.minPoint)").col-xs-12.col-md-4.mb-4
+                .card
+                  img(ng-src="{{image.filename}}").card-img-top.img-fluid
+                  .card-block
+                    h4.card-title
+                      i(aria-hidden="true").fa.fa-folder
+                      |  {{image.subfolder}}
+                  .card-footer
+                    .row
+                      .col-6
+                        strong
+                          i(aria-hidden="true").fa.fa-star
+                          |  {{image.points}} point
+                          span(ng-if="image.points != 1") s
+                      .col-6
+                        button(ng-click="approve.deleteImage($index)").btn.btn-primary.btn-danger.float-right DELETE
+          div(ng-if="approve.activeTab === 'archived-images'").tab-pane.fade.show.active
+            .row
+              div(ng-repeat="image in approve.archivedImages track by image._id").col-xs-12.col-md-4.mb-4
+                .card
+                  img(ng-src="{{image.filename}}").card-img-top.img-fluid
+                  .card-block
+                    h4.card-title
+                      i(aria-hidden="true").fa.fa-folder
+                      |  {{image.subfolder}}
+                  .card-footer
+                    strong
+                      i(aria-hidden="true").fa.fa-star
+                      |  {{image.points}} point
+                      span(ng-if="image.points != 1") s
+      .footer.fixed-footer
+        .container.pt-2.pb-2
+          .row
+            .col-6
+              .form-inline
+                label(for="searchPoint").mr-sm-2.font-weight-bold
+                  i(aria-hidden="true").fa.fa-star
+                  | &nbsp;
+                  | Points filter:
+                input(type="number" ng-model="approve.searchPoint")#searchPoint.form-control
+            .col-6
+              .form-inline.float-right
+                label(for="minPoint").mr-sm-2.font-weight-bold
+                  i(aria-hidden="true").fa.fa-star
+                  | &nbsp;
+                  | Points more then:
+                input(type="number" ng-model="approve.minPoint")#minPoint.form-control
